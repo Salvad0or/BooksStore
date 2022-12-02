@@ -11,6 +11,7 @@ namespace Storee
         {
             Title = title;
             Id = id;
+
         }
 
     }
