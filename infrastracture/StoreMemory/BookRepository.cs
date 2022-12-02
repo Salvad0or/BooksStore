@@ -7,15 +7,15 @@ namespace StoreMemory
     {
         private readonly Book[] books = new Book[]
         {
-            new Book(1, "Art of Programming"),
-            new Book(2, "Refactoring"),
-            new Book(3, "C Programming Language")
+            new Book(1, "#124"),
+            new Book(2, "#sdfsdf"),
+            new Book(3, "gdb400")
         };
 
         public Book[] GetAllByTitle(string titlePart)
         {
             return books.Where(book => book.Title.Contains(titlePart))
-                .ToArray();
+                        .ToArray();
         }
     }
 }

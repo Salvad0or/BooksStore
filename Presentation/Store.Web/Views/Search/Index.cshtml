@@ -1,0 +1,16 @@
+﻿@using Storee;
+
+@model IEnumerable<Book>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>I finded these books</h1>
+
+
+    @foreach (Book item in Model)
+    {
+        <p> @item.Title </p>
+    }
+
+
