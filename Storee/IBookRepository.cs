@@ -3,6 +3,8 @@ namespace Storee
 {
     public interface IBookRepository
     {
-        Book[] GetAllByTitle(string titlePart);
+        Book[] SearchByIsbn(string isbn);
+
+        Book[] GetAllByTitleOrAuthor(string titleOrAuthor);
     }
 }
