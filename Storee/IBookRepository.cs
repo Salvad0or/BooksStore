@@ -6,5 +6,6 @@ namespace Storee
         Book[] SearchByIsbn(string isbn);
 
         Book[] GetAllByTitleOrAuthor(string titleOrAuthor);
+        Book GetBookById(int id);
     }
 }

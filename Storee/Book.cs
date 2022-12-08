@@ -11,6 +11,10 @@ namespace Storee
 
         public string Author { get; }
 
+        public string Descripton { get; set; }
+
+        public decimal Price { get; set; }
+
         public Book(int id, string title)
         {
             Title = title;
@@ -18,13 +22,14 @@ namespace Storee
 
         }
 
-        public Book(int id, string title, string isbn, string author)
+        public Book(int id, string title, string isbn, string author, string descripton, decimal price)
         {
             Title = title;
             Id = id;
             Isbn = isbn;
             Author = author;
-
+            Descripton = descripton;
+            Price = price;
         }
 
         internal static bool IsIsbn(string s)

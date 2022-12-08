@@ -1,5 +1,4 @@
 using Storee;
-using System;
 using Xunit;
 
 namespace Store.Tests
@@ -36,6 +35,58 @@ namespace Store.Tests
             bool actual = Book.IsIsbn("xxx IsBn 103-124-124 0 xxs");
 
             Assert.False(actual);
+        }
+
+        [Fact]
+        public void GetAllByQuery_WithIsbn_CallsGetAllByIsbn()
+        {
+
+            const int idOfIsbnSearch = 1;
+            const int idOfAutorSearch = 2;
+
+            var bookRep = new StubBookRepository();
+
+            bookRep.ROfSearchByIsbn = new[]
+            {
+                new Book(idOfIsbnSearch, "","","", "ha-hahaha", 10),
+            };
+
+            bookRep.ROfGetAllByTitleOrAuthor = new[]
+            {
+                new Book(idOfAutorSearch, "","","", "ha-sdfa", 11),
+            };
+
+            var bookService = new BookService(bookRep);
+
+            var books = bookService.GetAllByQuery("ISBN 12345-67890");
+
+            Assert.Collection(books, a => Assert.Equal(idOfIsbnSearch, a.Id));
+        }
+
+        [Fact]
+        public void GetAllByQuery_WithAutor_CallsGetAllByIsbn()
+        {
+
+            const int idOfIsbnSearch = 1;
+            const int idOfAutorSearch = 2;
+
+            var bookRep = new StubBookRepository();
+
+            bookRep.ROfSearchByIsbn = new[]
+            {
+                new Book(idOfIsbnSearch, "","","", "ha-sdfa", 11),
+            };
+
+            bookRep.ROfGetAllByTitleOrAuthor = new[]
+            {
+                new Book(idOfAutorSearch, "","","Alex", "ha-sdfa", 11),
+            };
+
+            var bookService = new BookService(bookRep);
+
+            var books = bookService.GetAllByQuery("Alex");
+
+            Assert.Collection(books, a => Assert.Equal(idOfAutorSearch, a.Id));
         }
     }
 }

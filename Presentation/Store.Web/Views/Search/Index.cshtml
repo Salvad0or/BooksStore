@@ -1,16 +1,30 @@
-﻿@using Storee;
-
-@model IEnumerable<Book>
+﻿
+@model Book[]
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Результаты поиска";
 }
 
-<h1>I finded these books</h1>
+<div class="test">
+    <h1>Результаты поиска</h1>
+</div>
 
 
-    @foreach (Book item in Model)
-    {
-        <p> @item.Title </p>
-    }
+@if (Model.Length == 0)
+{
+    <p>Ничего не найдено</p>
+}
+else
+{
+    <ul>
+        @foreach(Book book in Model)
+        {
+            <li>
+                <a href="@Url.Action("Index", "Book", new {ass = book.Id})">Title is - @book.Title</a>
+            </li>
+
+            
+        }
+    </ul>
+}
 
 

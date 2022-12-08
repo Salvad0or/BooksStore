@@ -7,9 +7,9 @@ namespace StoreMemory
     {
         private readonly Book[] books = new Book[]
         {
-            new Book(1, "#124", "ISBN 12123-32145", "D.Martn"),
-            new Book(2, "#sdfsdf", "ISBN 12123-32144", "D.Pushkin"),
-            new Book(3, "gdb400", "ISBN 12123-32143", "D.Karleon")
+            new Book(1, "#124", "ISBN 12123-32145", "D.Martn", "ha-sdfa", 11m),
+            new Book(2, "#sdfsdf", "ISBN 12123-32144", "D.Pushkin", "ha-sdfa", 12m),
+            new Book(3, "gdb400", "ISBN 12123-32143", "D.Karleon", "ha-sdfa", 13m)
         };
 
         public Book[] GetAllByTitle(string titlePart)
@@ -32,6 +32,9 @@ namespace StoreMemory
                         .ToArray();
         }
 
-        
+        public Book GetBookById(int id)
+        {
+            return books.Single(book => book.Id == id);
+        }
     }
 }
