@@ -12,9 +12,9 @@ namespace Store.Web.Controllers
             bookRepository = _bookRepository;
         }
 
-        public IActionResult Index(int ass)
+        public IActionResult Index(int query)
         {
-            Book book = bookRepository.GetBookById(ass);
+            Book book = bookRepository.GetBookById(query);
 
             return View(book);
         }
